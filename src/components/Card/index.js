@@ -12,7 +12,7 @@ function Card(props) {
       }}
     >
       {/* {!props.image && <i className="fa fa-spinner fa-spin" aria-hidden="true" />} */}
-      <img src={ruidiaz} width="100" height="80"></img>
+      <img src={ruidiaz} width="90" height="70"></img>
     </div>
   );
 }

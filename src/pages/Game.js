@@ -58,7 +58,30 @@ class Game extends Component {
         <h1 className="text-center">
           Score: {this.state.score} Top score: {this.state.topScore}
         </h1>
+        <div className="row">
+
+          <div className="col-xs-2">
+            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+          </div>
+          <div className="col-xs-2">
+          </div>
+          <div className="col-xs-2">
+            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+          </div>
+          <div className="col-xs-2">
+          </div>
+          <div className="col-xs-2">
+            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+          </div>
+          <div className="col-xs-2">
+          </div>
+        </div>
+        {/* <row>
         <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+        <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+        </row>
+        <br/>
+        <Card image={this.state.image} handleBtnClick={this.handleBtnClick} /> */}
         {/* <Alert style={{ opacity: this.state.match ? 1 : 0 }} type="success">
           Yay! That Pup Liked You Too!!!
         </Alert> */}
