@@ -14,7 +14,30 @@ class Game extends Component {
     //this.loadNextDog();
   }
 
-//   handleBtnClick = event => {
+  updateItem(id, itemAttributes) {
+    var index = this.state.image_id.findIndex(x=> x.id === id);
+    if (index === -1)
+      {}
+    else
+      this.setState({
+        image_id: [
+           ...this.state.image_id.slice(0,index),
+           Object.assign({}, this.state.image_id[index].clicked, itemAttributes),
+           ...this.state.image_id.slice(index+1)
+        ]
+      });
+  }
+
+handleBtnClick = (event, i) => {
+  console.log("here's i:");
+  console.log(i);
+  if (this.state.image_id[i].clicked === false) {    
+    this.setState({score: this.state.score+1});
+    this.updateItem(i, true);
+  } else {
+    console.log("You clicked twice on the same image. You lost!");
+  }
+
 //     // Get the data-value of the clicked button
 //     const btnType = event.target.attributes.getNamedItem("data-value").value;
 //     // Clone this.state to the newState object
@@ -36,7 +59,7 @@ class Game extends Component {
 //     // Replace our component's state with newState, load the next dog image
 //     this.setState(newState);
 //     this.loadNextDog();
-//   };
+};
 
 //   loadNextDog = () => {
 //     API.getRandomDog()
@@ -71,17 +94,17 @@ class Game extends Component {
         <div className="row">
 
           <div className="col-xs-2">
-            <Card image_id={new_image_id[0].index} handleBtnClick={this.handleBtnClick} />
+            <Card image_id={new_image_id[0].index} handleBtnClick={(e) => {this.handleBtnClick(e, new_image_id[0].index)}} />
           </div>
           <div className="col-xs-2">
           </div>
           <div className="col-xs-2">
-            <Card image_id={new_image_id[1].index} handleBtnClick={this.handleBtnClick} />
+            <Card image_id={new_image_id[1].index} handleBtnClick={(e) => {this.handleBtnClick(e, new_image_id[0].index)}} />
           </div>
           <div className="col-xs-2">
           </div>
           <div className="col-xs-2">
-            <Card image_id={new_image_id[2].index} handleBtnClick={this.handleBtnClick} />
+            <Card image_id={new_image_id[2].index} handleBtnClick={(e) => {this.handleBtnClick(e, new_image_id[0].index)}} />
           </div>
           <div className="col-xs-2">
           </div>

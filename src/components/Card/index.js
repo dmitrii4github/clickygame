@@ -31,7 +31,7 @@ function Card(props) {
       }}
     >
       {/* {!props.image && <i className="fa fa-spinner fa-spin" aria-hidden="true" />} */}
-      <img src={image} width="90" height="70"></img>
+      <img src={image} width="90" height="70" onClick={props.handleBtnClick}></img>
     </div>
   );
 }
