@@ -3,7 +3,7 @@ import Card from "../components/Card";
 
 class Game extends Component {
   state = {
-    image: "../../../images/Ruidiaz.jpeg",
+    image_id: [{index: 0, clicked: false}, {index: 1, clicked: false} , {index: 2, clicked: false}],
     match: false,
     score: 0,
     topScore: 0
@@ -48,7 +48,17 @@ class Game extends Component {
 //       .catch(err => console.log(err));
 //   };
 
+  shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   render() {
+    var new_image_id = this.shuffle(this.state.image_id);
+    //this.setState({image_id: new_image_id});
     return (
       <div>
         <h1 className="text-center">Clicky Game!</h1>
@@ -61,17 +71,17 @@ class Game extends Component {
         <div className="row">
 
           <div className="col-xs-2">
-            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+            <Card image_id={new_image_id[0].index} handleBtnClick={this.handleBtnClick} />
           </div>
           <div className="col-xs-2">
           </div>
           <div className="col-xs-2">
-            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+            <Card image_id={new_image_id[1].index} handleBtnClick={this.handleBtnClick} />
           </div>
           <div className="col-xs-2">
           </div>
           <div className="col-xs-2">
-            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+            <Card image_id={new_image_id[2].index} handleBtnClick={this.handleBtnClick} />
           </div>
           <div className="col-xs-2">
           </div>
