@@ -6,7 +6,8 @@ class Game extends Component {
     image_id: [{index: 0, clicked: false}, {index: 1, clicked: false} , {index: 2, clicked: false}],
     match: false,
     score: 0,
-    topScore: 0
+    topScore: 0,
+    message: "Click on image to begin!"
   };
 
   // When the component mounts, load the next dog to be displayed
@@ -32,6 +33,12 @@ class Game extends Component {
     }
   }
 
+resetImageArray() {
+  for (let i=0; i<this.state.image_id.length; i++) {
+    this.updateItem(i, false);
+  }
+}
+
 handleBtnClick = (event, i) => {
   console.log("here's i:");
   console.log(i);
@@ -42,6 +49,10 @@ handleBtnClick = (event, i) => {
     this.updateItem(i, true);
   } else {
     console.log("You clicked twice on the same image. You lost!");
+    this.setState({topScore: this.state.score});    
+    this.setState({score: 0});
+    this.setState({message: "You clicked on this image twice. You lost!"});
+    this.resetImageArray();
   }
 
 //     // Get the data-value of the clicked button
@@ -94,6 +105,7 @@ handleBtnClick = (event, i) => {
         <h3 className="text-center">
         Click on an image to earn points, but don't click on any more than once!   
         </h3>
+        <div className="text-center" id="messaging_div"><h3>{this.state.message}</h3></div> 
         <h1 className="text-center">
           Score: {this.state.score} Top score: {this.state.topScore}
         </h1>
