@@ -3,8 +3,12 @@ import Card from "../components/Card";
 
 class Game extends Component {
   state = {
-    image_id: [{index: 0, clicked: false}, {index: 1, clicked: false} , {index: 2, clicked: false}],
-    match: false,
+    image_id: [{index: 0, clicked: false}, {index: 1, clicked: false} , {index: 2, clicked: false},
+               {index: 3, clicked: false}, {index: 4, clicked: false} , {index: 5, clicked: false},
+               {index: 6, clicked: false}, {index: 7, clicked: false} , {index: 8, clicked: false},
+               {index: 9, clicked: false}, {index: 10, clicked: false} , {index: 11, clicked: false},
+               {index: 12, clicked: false}, {index: 13, clicked: false} , {index: 14, clicked: false},
+               {index: 15, clicked: false}, {index: 16, clicked: false} , {index: 17, clicked: false}],
     score: 0,
     topScore: 0,
     message: "Click on image to begin!"
@@ -20,7 +24,7 @@ class Game extends Component {
     if (id === -1)
       {}
     else {
-      console.log("Flipping from false to true");
+      console.log("Flipping from " + this.state.image_id[id].clicked + " to " + itemAttributes);
       console.log(this.state.image_id.slice(0,id));
       console.log(this.state.image_id.slice(id+1));
       this.setState({
@@ -31,12 +35,21 @@ class Game extends Component {
         ]
       });
     }
+    console.log("this.state.image_id array looks like this now:");
+    for (let i=0; i<this.state.image_id.length; i++) {    
+      console.log(this.state.image_id[i].clicked);
+    }
+  
   }
 
 resetImageArray() {
   for (let i=0; i<this.state.image_id.length; i++) {
     this.updateItem(i, false);
   }
+  // console.log("this.state.image_id array looks like this now:");
+  // for (let i=0; i<this.state.image_id.length; i++) {    
+  //   console.log(this.state.image_id[i].clicked);
+  // }
 }
 
 handleBtnClick = (event, i) => {
@@ -47,9 +60,11 @@ handleBtnClick = (event, i) => {
   if (this.state.image_id[i].clicked === false) {    
     this.setState({score: this.state.score+1});
     this.updateItem(i, true);
+    this.setState({message: "You guessed correctly!"});
   } else {
     console.log("You clicked twice on the same image. You lost!");
-    this.setState({topScore: this.state.score});    
+    if (this.state.score > this.state.topScore) 
+      this.setState({topScore: this.state.score});    
     this.setState({score: 0});
     this.setState({message: "You clicked on this image twice. You lost!"});
     this.resetImageArray();
@@ -110,21 +125,65 @@ handleBtnClick = (event, i) => {
           Score: {this.state.score} Top score: {this.state.topScore}
         </h1>
         <div className="row">
-
-          <div className="col-xs-2">
+          <div className="col-xs-1">
             <Card image_id={new_image_id[0].index} handleBtnClick={(e) => {this.handleBtnClick(e, 0)}} />
           </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1">
           </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1">
             <Card image_id={new_image_id[1].index} handleBtnClick={(e) => {this.handleBtnClick(e, 1)}} />
           </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1">
           </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1">
             <Card image_id={new_image_id[2].index} handleBtnClick={(e) => {this.handleBtnClick(e, 2)}} />
           </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[3].index} handleBtnClick={(e) => {this.handleBtnClick(e, 3)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[4].index} handleBtnClick={(e) => {this.handleBtnClick(e, 4)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[5].index} handleBtnClick={(e) => {this.handleBtnClick(e, 5)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[6].index} handleBtnClick={(e) => {this.handleBtnClick(e, 6)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[7].index} handleBtnClick={(e) => {this.handleBtnClick(e, 7)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[8].index} handleBtnClick={(e) => {this.handleBtnClick(e, 8)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[9].index} handleBtnClick={(e) => {this.handleBtnClick(e, 9)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[10].index} handleBtnClick={(e) => {this.handleBtnClick(e, 10)}} />
+          </div>
+          <div className="col-xs-1">
+          </div>
+          <div className="col-xs-1">
+            <Card image_id={new_image_id[11].index} handleBtnClick={(e) => {this.handleBtnClick(e, 11)}} />
+          </div>
+          <div className="col-xs-1">
           </div>
         </div>
         {/* <row>
