@@ -43,9 +43,17 @@ class Game extends Component {
   }
 
 resetImageArray() {
-  for (let i=0; i<this.state.image_id.length; i++) {
-    this.updateItem(i, false);
-  }
+  this.setState({
+    image_id: [{index: 0, clicked: false}, {index: 1, clicked: false} , {index: 2, clicked: false},
+      {index: 3, clicked: false}, {index: 4, clicked: false} , {index: 5, clicked: false},
+      {index: 6, clicked: false}, {index: 7, clicked: false} , {index: 8, clicked: false},
+      {index: 9, clicked: false}, {index: 10, clicked: false} , {index: 11, clicked: false},
+      {index: 12, clicked: false}, {index: 13, clicked: false} , {index: 14, clicked: false},
+      {index: 15, clicked: false}, {index: 16, clicked: false} , {index: 17, clicked: false}]
+  });
+  // for (let i=0; i<this.state.image_id.length; i++) {
+  //   this.updateItem(i, false);
+  // }
   // console.log("this.state.image_id array looks like this now:");
   // for (let i=0; i<this.state.image_id.length; i++) {    
   //   console.log(this.state.image_id[i].clicked);
