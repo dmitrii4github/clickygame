@@ -1,4 +1,4 @@
-# Scraping
+# Clicky Game
 
 ## What the project does
 This is a clicky game. It's a memory game where user should click on images and click only once to get the highest score. If user clicks twice, user loses in this game.
